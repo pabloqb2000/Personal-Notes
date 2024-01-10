@@ -1,0 +1,8 @@
+{
+    "icon": "/static/pencil.svg",
+    "title": "Apuntes",
+    "description": "Página para organizar mis apuntes personales",
+    "author": "Pablo Quintanilla Berriochoa",
+    "other-js-libraries": [],
+    "other-css-libraries": []
+}

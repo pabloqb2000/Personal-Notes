@@ -1,0 +1,82 @@
+{% extends 'templates/layout.html' %}
+
+{% block body %}
+  <div class="row"><div class="col-12">
+    <h1 class="mt-5">First reads</h1>
+  </div></div>
+  <div class="row">
+    <div class="col-lg-10">
+      <h2>How to Pseudo-CT: A Comparative Review of Deep Convolutional Neural Network Architectures for CT Synthesis</h2>
+    </div>
+    <div class="col-lg-2">
+      <p class="text-right">
+        <a href="/TFM/resources/AppliedSciences_Javier_Vera_How_To_Pseudo_CT_DL_CNN_2022.pdf">[LocalRef]</a>
+        <a href="https://doi.org/10.3390/app122211600">[Paper]</a>
+      </p>
+  </div></div>
+  <div class="row">
+    <div class="col-12">
+      <h3>Compared methods</h3>
+    </div>
+    <div class="col-12">
+      <ol id="compared-methods">
+        <li>U-Net</li>
+        <li>Atrous-Net</li>
+        <li>Residual-Net</li>
+      </ol>
+      <h3>Datasets</h3>
+      <ol id="datasets">
+        <li>Pairs of 3D T1-weighted MR and Low-dose CT images from the head of 19 healthy women</li>
+        <li>Dual echo Dixon-VIBE MR images and CT images from the pelvis of 13 colorectal and 6 prostate cancer patients <span class="text-muted">Dixon sequences include 4 images: water, fat, in phase and out-of-phase</span></li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex flex-row">
+      <h3>Introduction</h3>
+      <p class="text-right ml-2"><a href="/TFM/resources/AppliedSciences_Javier_Vera_How_To_Pseudo_CT_DL_CNN_2022.pdf#section.1">[1]</a>
+    </div>
+    <div class="col-12">
+      <p>
+        Older methods include non-machine-learning approaches, but they have lower accuracy and longer inference times. <br>
+        Newer methods propose U-Net architectures, DL segmentation, dilated convolutions, residual connections and <b>auto-context refinement</b>, adversarial NN,... <br>
+        This paper compares the <a href="#compared-methods">proposed methods</a> in both <a href="#datasets">datasets</a> using a 2D and a 3D version of each method.
+        <ol>
+          <li><b>2D schemes</b> use 2D slices from the MR data to generate the 2D slices of the Pseudo-CT</li>
+          <li><b>3D schemes</b> on the other hand use 3D patches along with 3D convolutions to generate the Pseudo-CT 3D patches.</li>
+        </ol>
+        <span class="text-muted">Dixon images are fed as 4-channel images</span>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex flex-row">
+      <h3>Conclusions</h3>
+      <p class="text-right ml-2"><a href="/TFM/resources/AppliedSciences_Javier_Vera_How_To_Pseudo_CT_DL_CNN_2022.pdf#section.5">[5]</a>
+    </div>
+    <div class="col-12">
+      <p>
+        The 3D scheme works better if the bone presents complex 3D structures across the slices. The loss of context information for the use of 3D patches is compensated by a smoother bone depiction in the result. Instead, if the bone does not vary across slices, it is better to use a slice-by-slice strategy with 2D filters.<br><br>
+        
+        The best models for each scheme were:
+        <ol>
+          <li>3D U-Nets: for 3D schemes</li>
+          <li>2D Residual networks: for 2D schemes</li>
+        </ol>
+        
+        Thus, for the head images the best model were 3D U-Nets, while 2D Residual networks performed better for the pelvic images.<br><br>
+        
+        The Dixon-Vibe MRI is the usual sequence acquired in the clinic. However, it probably does not contain enough information for pseudo-CT generation, given the similar results between the evaluated networks and schemes. Hence, in future works it would be interesting to compare results with Dixon-VIBE, T1 or even the recent zero-echo-time acquisitions.
+
+      </p>
+    </div>
+  </div>
+  <hr>
+  <div class="row justify-content-center"><div class="col-10">
+    <div class="csl-bib-body">
+      <div data-csl-entry-id="article" class="csl-entry">
+        Vera-Olmos, F., Torrado-Carvajal, A., Prieto de la Lastra, C., Catalano, O., Rozenholc, Y., Mazzeo, F., Soricelli, A., Salvatore, M., Izquierdo-Garcia, D., &#38; Malpica, N. (2022). How To Pseudo-CT: A Comparative Review of Deep Convolutional Neural Network Architectures for CT Synthesis. <i>Applied Sciences</i>, <i>12</i>, 11600. <a href="https://doi.org/10.3390/app122211600">https://doi.org/10.3390/app122211600</a>
+      </div>
+    </div>
+  </div></div>
+{% endblock %}
