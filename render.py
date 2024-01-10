@@ -63,7 +63,7 @@ class Renderer:
 
 def run():
     input_dir = r'./source'
-    output_dir = r'./public'
+    output_dir = r'./docs'
     delete_all = True
         
     loader = FileSystemLoader(input_dir)
