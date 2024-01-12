@@ -16,7 +16,7 @@
   </div></div>
   <div class="row">
     <div class="col-12">
-      <h3>Compared methods</h3>
+      <h3 class="mt-3">Compared methods</h3>
     </div>
     <div class="col-12">
       <ol id="compared-methods">
@@ -24,7 +24,7 @@
         <li>Atrous-Net</li>
         <li>Residual-Net</li>
       </ol>
-      <h3>Datasets</h3>
+      <h3 class="mt-3">Datasets</h3>
       <ol id="datasets">
         <li>Pairs of 3D T1-weighted MR and Low-dose CT images from the head of 19 healthy women</li>
         <li>Dual echo Dixon-VIBE MR images and CT images from the pelvis of 13 colorectal and 6 prostate cancer patients <span class="text-muted">Dixon sequences include 4 images: water, fat, in phase and out-of-phase</span></li>
@@ -33,7 +33,7 @@
   </div>
   <div class="row">
     <div class="col-12 d-flex flex-row">
-      <h3>Introduction</h3>
+      <h3 class="mt-3">Introduction</h3>
       <p class="text-right ml-2"><a href="/TFM/resources/AppliedSciences_Javier_Vera_How_To_Pseudo_CT_DL_CNN_2022.pdf#section.1">[1]</a>
     </div>
     <div class="col-12">
@@ -51,7 +51,7 @@
   </div>
   <div class="row">
     <div class="col-12 d-flex flex-row">
-      <h3>Conclusions</h3>
+      <h3 class="mt-3">Conclusions</h3>
       <p class="text-right ml-2"><a href="/TFM/resources/AppliedSciences_Javier_Vera_How_To_Pseudo_CT_DL_CNN_2022.pdf#section.5">[5]</a>
     </div>
     <div class="col-12">
@@ -86,17 +86,47 @@
     <div class="col-lg-2">
       <p class="text-right">
         <a href="/TFM/resources/JNM_Pseudo_CT_SPM_2014.pdf">[LocalRef]</a>
-        <a href="https://doi.org/10.2967/jnumed.113.136341">[Paper]</a>
+        <a href="https://doi.org/10.2967/jnumed.113.136341">[Paper]</a><br>
+        <a href="/TFM/resources/JNM_Pseudo_CT_SPM_2014_Supplemental_Data.pdf">[Sumplemental material]</a>
       </p>
   </div></div>
   <div class="row">
     <div class="col-12">
-      <h3>Abstract</h3>
+      <h3 class="mt-3">Abstract</h3>
     </div>
     <div class="col-12">
       This paper presents a <a href="https://www.fil.ion.ucl.ac.uk/spm/">SPM8</a> <span class="text-muted">(Software)</span> based pseudo-CT generation using a segmentation and atlas-based scheme. <br><br>
 
       They used a 15 glioblastoma subjects dataset to produce the atlases and then validated the results on a dataset composed of 16 subjects with brain tumor (n=12) and mild cognitive impairment (n=4).
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h3 class="mt-3">Method</h3>
+    </div>
+    <div class="col-12">
+      <b>Preprocessing:</b>
+      <ol>
+        <li>
+          All images were intensity-normalized using <a href="https://surfer.nmr.mgh.harvard.edu/">FreeSurfer</a>. 
+        </li>
+        <li>
+          CT images were then coregistered to the MR images using the SPM8 affine automatic coregistration.
+        </li>
+        <li>
+          CT images were resliced into the MR space.
+        </li>
+      </ol>
+      <b>Atlas generation was done using nonrigid coregistration by:</b>
+      <ol>
+        <li>MR segmentation into tissue classes.</li>
+        <li>Nonrigid coregistration of these tissue classes with SPM8 DARTEL <span class="text-muted">[Diffeomorphic Anatomical Registration Through Exponentiated Lie Algebra]</span>.</li>
+        <li>Wrapping of the CT iamges into the same space.</li>
+        <li>Average all the warped CT images to generate a final template.</li>
+        <li>Then the final CT template is inversely warped into the subject space with SPM8 Create Inverse Warped.</li>
+      </ol>
+      <b>More info on the <a href="TFM/resources/JNM_Pseudo_CT_SPM_2014_Supplemental_Data.pdf">sumplemental material</b></a>.<br><br>
+      <b>AC</b>: To compare our AC method with the CT AC, the Hounsfield units of the atlas-based and resliced CT images generated from the validation subjects were converted to LACs using the bilinear transformation. Gaussian smoothing with a 4-mm kernel was applied to these attenuation maps to match the PET spatial resolution.
     </div>
   </div>
   <hr>
